@@ -55,7 +55,7 @@ done
 # Make sure libpq is not in the system
 rm /usr/local/lib/libpq.*
 if [ `uname -m` = 'aarch64' ]; then
-   yum install -y iproute2
+   yum install -y iproute
 fi   
 
 # Connect to the host to test. Use 'docker -e' to pass other variables
