@@ -77,6 +77,6 @@ for PYBIN in /opt/python/*/bin; do
     fi
 
     # Run Postgres tests via SSH
-    export PGSSLMODE=require
-    "${PYBIN}/python" -c "import tests; tests.unittest.main(defaultTest='tests.test_suite')"
+    #export PGSSLMODE=require
+    #"${PYBIN}/python" -c "import tests; tests.unittest.main(defaultTest='tests.test_suite')"
 done
