@@ -54,6 +54,9 @@ done
 
 # Make sure libpq is not in the system
 rm /usr/local/lib/libpq.*
+if [ `uname -m` = 'aarch64' ]; then
+   apt-get install -y iproute2
+fi   
 
 # Connect to the host to test. Use 'docker -e' to pass other variables
 export PSYCOPG2_TESTDB_HOST=$(ip route show | awk '/default/ {print $3}')
@@ -77,6 +80,6 @@ for PYBIN in /opt/python/*/bin; do
     fi
 
     # Run Postgres tests via SSH
-    #export PGSSLMODE=require
-    #"${PYBIN}/python" -c "import tests; tests.unittest.main(defaultTest='tests.test_suite')"
+    export PGSSLMODE=require
+    "${PYBIN}/python" -c "import tests; tests.unittest.main(defaultTest='tests.test_suite')"
 done
